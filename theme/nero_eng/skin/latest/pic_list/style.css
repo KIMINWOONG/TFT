@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+/* 새글 스킨 (latest) */
+.pic_li_lt {position:relative;width: 100%;background:#fff}
+.pic_li_lt .lat_title {display:block;line-height:45px;font-size:1.2em;color:#253dbe}
+.pic_li_lt .lat_title a {color:#000;display:inline-block;position:relative}
+.latest_top_wr .pic_li_lt:nth-child(3n+1) {clear: both!important}
+
+.pic_li_lt .lt_more {position:absolute;top:11px;right:10px;display:block;width:25px;line-height:25px;color:#aaa;border-radius:3px;text-align:center}
+.pic_li_lt .lt_more:hover {color:#777}
+.pic_li_lt ul:after {display:block;visibility:hidden;clear:both;content:""}
+.pic_li_lt li {border-bottom:1px solid #e5ecee;margin-bottom:10px}
+.pic_li_lt li .lt_img {display:none}
+.pic_li_lt li:first-child .lt_img {display:block;margin:0 0 10px;display:block}
+.pic_li_lt li:first-child .lt_img img, .pic_li_lt li .lt_img video {width:100%;height:auto}
+.pic_li_lt li .pic_li_tit {font-weight:bold;font-size:1.2em;line-height:20px;vertical-align:middle}
+
+.pic_li_lt li .fa-heart {color:#ff0000}
+.pic_li_lt li .fa-lock {display:inline-block;line-height:14px;width:16px;font-size:0.833em;color:#4f818c;background:#cbe3e8;text-align:center;border-radius:2px;font-size:12px;border:1px solid #cbe3e8;vertical-align:middle}
+.pic_li_lt li .new_icon {display:inline-block;width:16px;line-height:16px;font-size:0.833em;color:#23db79;background:#b9ffda;text-align:center;border-radius:2px;margin-left:2px;font-weight:bold;vertical-align:middle}
+.pic_li_lt li .hot_icon {display:inline-block;width:16px;line-height:16px;font-size:0.833em;color:#ff0000;background:#ffb9b9;text-align:center;border-radius:2px;vertical-align:middle}
+.pic_li_lt li .fa-caret-right {color:#bbb}
+.pic_li_lt li .fa-download {display:inline-block;width:16px;line-height:16px;font-size:0.833em;color:#daae37;background:#ffefb9;text-align:center;border-radius:2px;vertical-align:middle}
+.pic_li_lt li .fa-link {display:inline-block;width:16px;line-height:16px;font-size:0.833em;color:#b451fd;background:#edd3fd;text-align:center;border-radius:2px;vertical-align:middle}
+
+.pic_li_lt .profile_img img{border-radius:50%}
+
+.lt_info {padding:10px 0}
+.lt_info .lt_nick {}
+.lt_info .lt_date {color:#888}
+
+.pic_li_lt .empty_li {line-height:145px;color:#666;text-align:center;padding:0}
+.pic_li_lt .empty_li:before {background:none;padding:0}
+
+.pic_li_lt .lt_cmt {background:#e9eff5;color:#3a8afd;font-size:11px;height:16px;line-height:16px;padding:0 5px;border-radius:3px;vertical-align:middle}
+.pic_li_lt .lt_more {position:absolute;top:11px;right:10px;display:block;width:40px;line-height:25px;color:#3a8afd;border-radius:3px;text-align:center}
+.pic_li_lt .lt_more:hover {color:#777}
+
+.pic_lt .lt_wrap{display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; background: rgba(255,255,255,0.9); padding: 20px; box-shadow: 0 1px 10px rgba(0,0,0,0.1);}
+.pic_lt .lt_wrap:last-child{margin-bottom: 0px;}
+.pic_lt .lt_wrap:hover{background: #f9f9f9; transition: 0.3s all;}
+.pic_lt .lt_wrap .lt_text_top{display: flex; align-items: center;}
+.pic_lt .lt_wrap .lt_text_top .lt_info{min-width: 120px; display: flex; flex-direction: column;margin-right: 30px;}
+.pic_lt .lt_wrap .lt_text_top .lt_info .lt_day{font-size: 5.0rem; color: #ccc; text-align: center; font-weight: 800;}
+.pic_lt .lt_wrap .lt_text_top .lt_text_con{display: flex; flex-direction: column; width: 100%;}
+.pic_lt .lt_wrap .lt_text_top .lt_info .lt_date{font-size: 1.8rem; color: #ccc; text-align: center;}
+.pic_lt .lt_wrap .lt_text_top .lt_text_con a:first-child{font-size: 2.4rem; color: #333;font-weight: 500; margin-bottom: 15px;}
+.pic_lt .lt_wrap .lt_text_top .lt_text_con a:first-child:hover{color: #364F6B;}
+.pic_lt .lt_wrap .lt_text_top .lt_text_con a:last-child{font-size: 1.6rem; color: #444; line-height: 120%;}
+.pic_lt .lt_wrap .lt_img{min-width: 220px; max-width: 220px; margin-left: 30px; height: 160px; overflow: hidden;}
+.pic_lt .lt_wrap .lt_img img{width: 100%;}
+
+.lt_cmt{display: none;}

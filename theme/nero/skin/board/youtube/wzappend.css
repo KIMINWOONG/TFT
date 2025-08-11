@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.gall_row figure{overflow:hidden;margin:0;max-width:100%;height:auto;background:#3085a3;text-align:center;cursor:pointer}
+.gall_row figure img{position:relative;display:block;min-height:100%;max-width:100%;opacity:.8;width: 100%;}
+.gall_row figure figcaption{padding:20px;color:#fff;text-transform:uppercase;font-size:1.25em;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.gall_row figure figcaption::before,.gall_row figure figcaption::after{pointer-events:none}
+.gall_row figure figcaption,.gall_row figure figcaption>a{position:absolute;top:0;left:0;width:100%;height:100%}
+.gall_row figure figcaption>a{z-index:1000;text-indent:200%;white-space:nowrap;font-size:0;opacity:0}
+.gall_row figure .post-head{display:block;word-spacing:-0.15em;}
+.gall_row figure .post-head,.gall_row figure .desc{margin:0}
+.gall_row figure .desc{font-size:12px;}
+
+figure.bx-grandi{position:relative;background:#42b078}
+
+figure.bx-grandi{background:#fff}
+figure.bx-grandi img{opacity:.9;-webkit-transition:opacity .35s;transition:opacity .35s}
+/* figure.bx-grandi:hover img{opacity:.5} */
+figure.bx-grandi:hover::before{content: '';position: absolute;top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9);}
+figure.bx-grandi figcaption::before{display: none;position:absolute;bottom:0;left:0;width:100%;height:100%;background: rgba(0, 0, 0, 0.9);content:'';}
+figure.bx-grandi .post-head{position:absolute;bottom:0;left:0;padding: 0px 15px 20px;width:100%;text-align:left;-webkit-transform:translate3d(0,-30px,0);transform:translate3d(0,-30px,0);color: #222;}
+figure.bx-grandi .post-head i{font-style:normal;opacity:0;-webkit-transition:opacity .35s,-webkit-transform .35s;transition:opacity .35s,transform .35s;-webkit-transform:translate3d(0,-30px,0);transform:translate3d(0,-30px,0)}
+figure.bx-grandi figcaption::before,figure.bx-grandi .post-head{-webkit-transition:-webkit-transform .35s;transition:transform .35s}
+figure.bx-grandi:hover figcaption::before,figure.bx-grandi:hover .post-head,figure.bx-grandi:hover .post-head i{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+#bo_gall .gall_info{
+  display: none;
+  
+}

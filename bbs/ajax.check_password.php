@@ -1,0 +1,33 @@
+<?php
+include_once('./_common.php');
+
+$code="0000";
+$msg="";
+
+    $qstr = 'bo_table='.$bo_table.'&amp;sfl='.$sfl.'&amp;stx='.$stx.'&amp;sop='.$sop.'&amp;wr_id='.$wr_id.'&amp;page='.$page;
+
+    $wr = get_write($write_table, $wr_id);
+
+    if( !$wr['wr_password'] && $wr['mb_id'] ){
+        if ( $mb = get_member($wr['mb_id']) ){
+            $wr['wr_password'] = $mb['mb_password'];
+        }
+    }
+
+    if (!check_password($wr_password, $wr['wr_password'])) {
+        run_event('password_is_wrong', 'bbs', $wr, $qstr);
+		$code="0001";
+		$msg='비밀번호가 틀립니다.';
+    }else{
+
+    // 세션에 아래 정보를 저장. 하위번호는 비밀번호없이 보아야 하기 때문임.
+    //$ss_name = 'ss_secret.'_'.$bo_table.'_'.$wr_id';
+    $ss_name = 'ss_secret_'.$bo_table.'_'.$wr['wr_num'];
+    //set_session("ss_secret", "$bo_table|$wr[wr_num]");
+    set_session($ss_name, TRUE);
+	}
+
+$return_data=array("code"=>$code, "msg"=>$msg);
+
+echo json_encode($return_data);
+?>
