@@ -86,17 +86,27 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <section id="bo_v_atc">
         <h2 id="bo_v_atc_title">본문</h2>
-        <?php if($view['wr_link1']){?>
-          <style>
-          .video-wrap {position:relative;padding-bottom:56.25%;margin:0 auto;height:0; overflow:hidden; margin-bottom: 30px; margin-top: 50px;}
-          .video-wrap iframe,
-          .video-wrap object,
-          .video-wrap embed {position:absolute; top:0; left:0; width:100%; height:100%;}
-          </style>
-          <div class="video-wrap">
-             <iframe id="video" width="100%" height="315" src="https://player.vimeo.com/video/<?=$view['wr_link1']?>" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-          </div>
-       <?php }?>
+        <?php
+$video_id = '';
+if($view['wr_link1']) {
+    if(preg_match('/vimeo\.com\/(?:video\/)?([0-9]+)/', $view['wr_link1'], $matches)) {
+        $video_id = $matches[1];
+    } elseif(preg_match('/^[0-9]+$/', trim($view['wr_link1']))) {
+        $video_id = trim($view['wr_link1']);
+    }
+}
+if($video_id){
+?>
+  <style>
+  .video-wrap {position:relative;padding-bottom:56.25%;margin:0 auto;height:0; overflow:hidden; margin-bottom: 30px; margin-top: 50px;}
+  .video-wrap iframe,
+  .video-wrap object,
+  .video-wrap embed {position:absolute; top:0; left:0; width:100%; height:100%;}
+  </style>
+  <div class="video-wrap">
+     <iframe id="video" width="100%" height="315" src="https://player.vimeo.com/video/<?=$video_id?>" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+<?php } ?>
 
         <?php
         // 파일 출력

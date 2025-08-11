@@ -2,6 +2,13 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 
+function get_vimeo_id_from_url($url){
+    if(preg_match('/vimeo\.com\/(?:video\/)?([0-9]+)/', $url, $m)) return $m[1];
+    if(preg_match('/^[0-9]+$/', trim($url))) return trim($url);
+    return '';
+}
+
+
 function get_paging2($write_pages, $cur_page, $total_page, $url, $add="")
 {
 	global $config;
@@ -94,14 +101,25 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/wzappend.css">'
 	<div class="stitle wow fadeInup"  data-wow-duration="1s">
     <h2  class="titleM"><?php echo $sNum?></h2>
   </div>
+<?php if ($is_category) { ?>
+<nav id="bo_cate" style="margin:20px 0px;">
+    <h2><?php echo $board['bo_subject'] ?> 카테고리</h2>
+    <ul id="bo_cate_ul">
+        <?php echo $category_option ?>
+    </ul>
+</nav>
+<?php } ?>
 
-	<div class="you_big">
-		<div class="embed-vimeo">
-		<iframe width="100%" height="100%" src="https://player.vimeo.com/video/<?=$list[0]['wr_link1']?>" title="Vimeo video player" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-		</div>
-	</div>
+	<?php $first_video_id = isset($list[0]['wr_link1']) ? get_vimeo_id_from_url($list[0]['wr_link1']) : ''; ?>
+<?php if($first_video_id){ ?>
+<div class="you_big">
+                <div class="embed-vimeo">
+                <iframe width="100%" height="100%" src="https://player.vimeo.com/video/<?=$first_video_id?>" title="Vimeo video player" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+        </div>
+<?php } ?>
 
-		<form name="fboardlist"  id="fboardlist" action="<?php echo G5_BBS_URL; ?>/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
+                <form name="fboardlist"  id="fboardlist" action="<?php echo G5_BBS_URL; ?>/board_list_update.php" onsubmit="return fboardlist_submit(this);" method="post">
 		<input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
 		<input type="hidden" name="sfl" value="<?php echo $sfl ?>">
 		<input type="hidden" name="stx" value="<?php echo $stx ?>">
@@ -153,38 +171,30 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/wzappend.css">'
 
 
 		<div class="youtube">
-		<!-- 게시판 카테고리 시작 { -->
-		<?php if ($is_category) { ?>
-		<nav id="bo_cate" style="margin:20px 0px;">
-				<h2><?php echo $board['bo_subject'] ?> 카테고리</h2>
-				<ul id="bo_cate_ul">
-						<?php echo $category_option ?>
-				</ul>
-		</nav>
-		<?php } ?>
-		<!-- } 게시판 카테고리 끝 -->
-
+		
 			<div class="you_wrap">
 				<?php for ($i=0; $i<count($list); $i++) {
 
-						$classes = array();
+                                                $classes = array();
 
-						$classes[] = 'gall_li';
-						$classes[] = 'col-gn-'.$bo_gallery_cols;
+                                                $classes[] = 'gall_li';
+                                                $classes[] = 'col-gn-'.$bo_gallery_cols;
 
-						if( $i && ($i % $bo_gallery_cols == 0) ){
-								$classes[] = 'box_clear';
-						}
+                                                if( $i && ($i % $bo_gallery_cols == 0) ){
+                                                                $classes[] = 'box_clear';
+                                                }
 
-						if( $wr_id && $wr_id == $list[$i]['wr_id'] ){
-								$classes[] = 'gall_now';
-						}
+                                                if( $wr_id && $wr_id == $list[$i]['wr_id'] ){
+                                                                $classes[] = 'gall_now';
+                                                }
 
-						$line_height_style = ($board['bo_gallery_height'] > 0) ? 'line-height:'.$board['bo_gallery_height'].'px' : '';
-				 ?>
-				<div class="you_box" data-value="<?=$list[$i]['wr_link1']?>">
+                                                $line_height_style = ($board['bo_gallery_height'] > 0) ? 'line-height:'.$board['bo_gallery_height'].'px' : '';
+                                $video_id = get_vimeo_id_from_url($list[$i]['wr_link1']);
+                                 ?>
+                                <div class="you_box" data-value="<?=$video_id?>">
+
 					<div class="you_thum">
-						<img src="https://vumbnail.com/<?=$list[$i]['wr_link1']?>.jpg" alt="">
+						<img src="https://vumbnail.com/<?=$video_id?>.jpg" alt="">
 						<span class="you_thum_bg"><img src="<?php echo G5_THEME_URL ?>/img/you_thum_bg.png" alt=""></span>
 						<div class="playbtn_wrap"><div class="playbtn"><i class="fa fa-play" aria-hidden="true"></i></div></div>
 						<div class="gall_chk chk_box">
@@ -222,7 +232,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/wzappend.css">'
 
 							<a href="javascript:void(0)" class="vimeo_view">간편보기</a>
 							<a href="<?php echo $list[$i]['href'] ?>" class="vimeo_view">게시글 보기</a>
-							<a href="https://vimeo.com/<?=$list[$i]['wr_link1']?>" target=_blank>비메오</a>
+							<a href="https://vimeo.com/<?=$video_id?>" target=_blank>비메오</a>
 						</div>
 					</div>
 				</div>
