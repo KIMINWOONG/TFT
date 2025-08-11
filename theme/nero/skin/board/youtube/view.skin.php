@@ -97,14 +97,8 @@ if($view['wr_link1']) {
 }
 if($video_id){
 ?>
-  <style>
-  .video-wrap {position:relative;padding-bottom:56.25%;margin:0 auto;height:0; overflow:hidden; margin-bottom: 30px; margin-top: 50px;}
-  .video-wrap iframe,
-  .video-wrap object,
-  .video-wrap embed {position:absolute; top:0; left:0; width:100%; height:100%;}
-  </style>
   <div class="video-wrap">
-     <iframe id="video" width="100%" height="315" src="https://player.vimeo.com/video/<?=$video_id?>" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+     <iframe id="video" width="100%" height="100%" src="https://player.vimeo.com/video/<?=$video_id?>" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
 <?php } ?>
 
