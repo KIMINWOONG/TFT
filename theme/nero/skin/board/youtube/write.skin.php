@@ -128,12 +128,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     </div>
 <?php $i=1; ?>
-<label for="" class="bwcon_title you_exinfo">링크 #1 비메오 아이디 작성 <span>https://vimeo.com/<strong>123456789</strong></span></label>
+<label for="" class="bwcon_title you_exinfo">링크 #1 비메오 URL 또는 아이디 작성 <span>예: https://vimeo.com/<strong>123456789</strong></span></label>
       <div class="write_wrap">
       <?php for ($i=1; $is_link && $i<=G5_LINK_COUNT; $i++) { ?>
         <div class="write_box">
           <label for="wr_link<?php echo $i ?>" class="bwcon_title">링크  #<?php echo $i ?></label>
-          <div class="write_content"><input type="text" name="wr_link<?php echo $i ?>" value="<?php if($w=="u"){ echo $write['wr_link'.$i]; } ?>" id="wr_link<?php echo $i ?>" class=""></div>
+          <div class="write_content"><input type="text" name="wr_link<?php echo $i ?>" value="<?php if($w=="u"){ echo $write['wr_link'.$i]; } ?>" id="wr_link<?php echo $i ?>" class="" placeholder="Vimeo URL 또는 ID"></div>
         </div>
       <?php } ?>
       </div>
